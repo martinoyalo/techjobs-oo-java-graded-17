@@ -8,10 +8,10 @@ public class Job {
     private static int nextId = 1;
 
     private String name;
-    private String employer;
-    private String location;
-    private String positionType;
-    private String coreCompetency;
+    private Employer employer;
+    private Location location;
+    private PositionType positionType;
+    private CoreCompetency coreCompetency;
 
     // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
     //  other five fields. The second constructor should also call the first in order to initialize
@@ -20,7 +20,8 @@ public class Job {
         id = nextId;
         nextId++;
     }
-    public Job(String name, String employer, String location, String positionType, String coreCompetency) {
+    public Job(String name, Employer employer,  Location location, PositionType positionType, CoreCompetency coreCompetency) {
+        this();
         this.name = name;
         this.employer = employer;
         this.location = location;
@@ -43,35 +44,35 @@ public class Job {
         this.name = name;
     }
 
-    public String getEmployer() {
+    public Employer getEmployer() {
         return employer;
     }
 
-    public void setEmployer(String employer) {
+    public void setEmployer(Employer employer) {
         this.employer = employer;
     }
 
-    public String getLocation() {
+    public Location getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Location location) {
         this.location = location;
     }
 
-    public String getPositionType() {
+    public PositionType getPositionType() {
         return positionType;
     }
 
-    public void setPositionType(String positionType) {
+    public void setPositionType(PositionType positionType) {
         this.positionType = positionType;
     }
 
-    public String getCoreCompetency() {
+    public CoreCompetency getCoreCompetency() {
         return coreCompetency;
     }
 
-    public void setCoreCompetency(String coreCompetency) {
+    public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
     }
 
@@ -90,5 +91,19 @@ public class Job {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+
+
+
+        return System.lineSeparator() + "ID: " + this.getId() +
+                System.lineSeparator()+ "Name: " + (this.getName().isEmpty()? "Data not available" : this.getName()) +
+                System.lineSeparator() + "Employer: " + (employer.getValue().isEmpty()? "Data not available" : this.getEmployer().getValue()) +
+                System.lineSeparator() + "Location: " + (location.getValue().isEmpty()? "Data not available" : this.getLocation().getValue()) +
+                System.lineSeparator() + "Position Type: " + (positionType.getValue().isEmpty()? "Data not available" : this.getPositionType().getValue()) +
+                System.lineSeparator()+ "Core Competency: " + (coreCompetency.getValue().isEmpty()? "Data not available": this.getCoreCompetency().getValue()) +
+                System.lineSeparator();
     }
 }
